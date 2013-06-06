@@ -1,5 +1,14 @@
 import ConfigParser
+import sys
 
+
+def get_debug():
+    try:
+        debug = sys.argv[1].lower() == 'true'
+    except IndexError:
+        debug = False
+
+    return debug
 
 def get_token_config():
     """

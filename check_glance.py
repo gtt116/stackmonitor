@@ -7,10 +7,7 @@ from glanceclient import exc as glanceexc
 import utils
 import keystone
 
-try:
-    DEBUG = sys.argv[1].lower() == 'true'
-except IndexError:
-    DEBUG = False
+DEBUG = utils.get_debug()
 
 
 def main():
@@ -52,7 +49,7 @@ def main():
         result = 'success'
 
     print ('result %(result)s != success %(script_name)s %(result)s..' %
-        {'result': result, 'script_name': sys.argv[0]})
+           {'result': result, 'script_name': sys.argv[0]})
 
 
 if __name__ == '__main__':
