@@ -80,4 +80,5 @@ except Exception, ex:
         traceback.print_exc()
     result = 'failed'
 
-print 'result %s != success ${key}的值${value}${operator}${limit},脚本运行时间为${time}秒' % result
+print ('result %(result)s != success %(script_name)s %(result)s..' %
+       {'result': result, 'script_name': sys.argv[0]})
