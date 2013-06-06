@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #-*- encoding: utf-8 -*-
 from novaclient.v1_1 import client as novaclient
 

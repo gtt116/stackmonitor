@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #-*- encoding: utf-8 -*-
 from glanceclient.v1 import client as glanceclient
 from glanceclient import exc as glanceexc
