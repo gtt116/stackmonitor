@@ -1,6 +1,4 @@
 #-*- encoding: utf-8 -*-
-import sys
-
 from glanceclient.v1 import client as glanceclient
 from glanceclient import exc as glanceexc
 
@@ -43,15 +41,12 @@ def main():
 
     except Exception:
         if DEBUG:
-            import traceback
-            traceback.print_exc()
+            utils.print_traceback()
         result = 'failed'
     else:
         result = 'success'
 
-    print ('result %(result)s != success %(script_name)s %(result)s..' %
-           {'result': result, 'script_name': sys.argv[0]})
-
+    utils.print_result(result)
 
 if __name__ == '__main__':
     main()
