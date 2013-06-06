@@ -19,8 +19,9 @@ def main():
         if DEBUG:
             print username, password, tenant_name, keystone_url, glance_url
 
-        token = keystone.get_token(username, password,
-                                   tenant_name, keystone_url)
+        user = keystone.Keystone(username, password,
+                                 tenant_name, keystone_url)
+        token = user.get_token()
 
         glance = glanceclient.Client(endpoint=glance_url, token=token)
 
