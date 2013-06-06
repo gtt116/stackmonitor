@@ -8,8 +8,11 @@ Usage
 =====
 
     if [ -e stackmonitor ]; then
-        rm -rf stackmonitor
+        cd stackmonitor;
+        git pull origin >/dev/null
+        cd -
+    else
+        git clone git://github.com/gtt116/stackmonitor >/dev/null
     fi
-    git clone git://github.com/gtt116/stackmonitor >/dev/null
 
     python stackmonitor/check_glance.py true
