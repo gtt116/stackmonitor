@@ -1,12 +1,15 @@
 #-*- encoding: utf-8 -*-
-
-DEBUG = False
-
+import sys
 import ConfigParser
 
 from glanceclient.v1 import client as glanceclient
 from glanceclient import exc as glanceexc
 from keystoneclient.v2_0 import client as keyclient
+
+try:
+    DEBUG = sys.argv[1].lower() == 'true'
+except IndexError:
+    DEBUG = False
 
 
 def read_keystone_rc():
