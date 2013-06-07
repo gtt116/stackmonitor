@@ -34,3 +34,11 @@ def get_random_host():
     random.shuffle(hosts)
     assert hosts
     return hosts[0]
+
+
+def get_network_topic():
+    return CONF.network_topic
+
+
+def get_compute_topic():
+    return CONF.compute_topic
