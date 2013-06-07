@@ -3,7 +3,6 @@
 
 from glanceclient.v1 import client as glanceclient
 from glanceclient import exc as glanceexc
-
 import utils
 import keystone
 
