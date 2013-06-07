@@ -1,4 +1,6 @@
+import random
 from nova import flags
+from nova import db
 from nova import context
 
 CONF = flags.cfg.CONF
@@ -20,3 +22,15 @@ def set_rpc_timeout():
     """Make sure it is invoked after `init_nova`. otherwise
     I will failed"""
     CONF.rpc_response_timeout = 10
+
+
+def get_hosts():
+    c = get_admin_context()
+    return [service.host for service in db.service_get_all(c)]
+
+
+def get_random_host():
+    hosts = get_hosts()
+    random.shuffle(hosts)
+    assert hosts
+    return hosts[0]
