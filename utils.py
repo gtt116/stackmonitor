@@ -37,7 +37,9 @@ def get_token_config():
     if -1 == auth_uri.rfind('/v2.0'):
         auth_uri = '%s/v2.0' % auth_uri
 
-    return (username, password, tenant_name, auth_uri)
+    ret = (username, password, tenant_name, auth_uri)
+    assert all(ret)
+    return ret
 
 
 def get_glance_url():
@@ -46,6 +48,7 @@ def get_glance_url():
     host = cc.get('DEFAULT', 'bind_host', '0.0.0.0')
     port = cc.get('DEFAULT', 'bind_port', '9292')
     glance_url = 'http://%s:%s/' % (host, port)
+    assert glance_url
     return glance_url
 
 
@@ -54,6 +57,7 @@ def get_nova_url():
     host = cc.get('DEFAULT', 'osapi_compute_listen', '0.0.0.0')
     port = cc.get('DEFAULT', 'osapi_compute_listen_port', '8774')
     nova_url = 'http://%s:%s/' % (host, port)
+    assert nova_url
     return nova_url
 
 
