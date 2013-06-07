@@ -23,8 +23,7 @@ try:
     if DEBUG:
         print vms
 except Exception:
-    if DEBUG:
-        utils.print_traceback()
+    utils.print_traceback()
     result = 'failed'
 else:
     result = 'success'

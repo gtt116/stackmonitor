@@ -2,6 +2,11 @@ import ConfigParser as configParser
 import sys
 
 
+def log(msg):
+    if get_debug():
+        print msg
+
+
 def get_debug():
     try:
         debug = sys.argv[1].lower() == 'true'
@@ -12,8 +17,9 @@ def get_debug():
 
 
 def print_traceback():
-    import traceback
-    traceback.print_exc()
+    if get_debug():
+        import traceback
+        traceback.print_exc()
 
 
 def print_result(result):
