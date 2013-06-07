@@ -3,18 +3,13 @@
 
 import nova_utils
 import utils
-from nova.scheduler import rpcapi
 
 try:
     nova_utils.init_nova()
-    nova_utils.set_rpc_timeout()
-    c = nova_utils.get_admin_context()
-    sche_api = rpcapi.SchedulerAPI()
-
     host = nova_utils.get_random_host()
     utils.log(host)
 
-    info = sche_api.show_host_resources(c, host)
+    info = nova_utils.rpccall_scheduler('show_host_resources', host=host)
     assert info
     utils.log(info)
 

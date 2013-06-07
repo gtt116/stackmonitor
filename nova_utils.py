@@ -51,6 +51,12 @@ def get_compute_topic(host=None):
         return rpc.queue_get_for(c, CONF.compute_topic, host)
     return CONF.compute_topic
 
+def get_scheduler_topic(host=None):
+    c = get_admin_context()
+    if host:
+        return rpc.queue_get_for(c, CONF.scheduler_topic, host)
+    return CONF.scheduler_topic
+
 
 def rpccall_network(method, **kwargs):
     c = get_admin_context()
@@ -64,5 +70,13 @@ def rpccall_compute(method, **kwargs):
     c = get_admin_context()
     host = get_hostname()
     return rpc.call(c, get_compute_topic(host),
+                    {'method': method, 'version': '2.0', 'args': kwargs},
+                    timeout=rpc_timeout)
+
+
+def rpccall_scheduler(method, **kwargs):
+    c = get_admin_context()
+    host = get_hostname()
+    return rpc.call(c, get_scheduler_topic(host),
                     {'method': method, 'version': '2.0', 'args': kwargs},
                     timeout=rpc_timeout)
