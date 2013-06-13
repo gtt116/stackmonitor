@@ -22,6 +22,7 @@ def main():
                                  tenant_name, keystone_url)
         token = user.get_token()
 
+        # glance_url = 'http://localhost:9292'
         glance = glanceclient.Client(endpoint=glance_url, token=token)
 
         image = glance.images.create(name='__nvs_monitor__',

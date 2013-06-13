@@ -12,6 +12,8 @@ try:
     user = keystone.Keystone(*utils.get_token_config())
     username, password, tenant_name, keystone_url = utils.get_token_config()
     nova_url = '%s/v1.1/%s' % (utils.get_nova_url(), user.get_tenant_id())
+    # keystone_url = 'http://localhost:5000/v2.0'
+    # nova_url = 'http://localhost:8774'
     nova = novaclient.Client(username, password, tenant_name,
                                     keystone_url, nova_url, no_cache=True)
 
